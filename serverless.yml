@@ -9,11 +9,11 @@ plugins:
   - serverless-dotenv-plugin
 
 functions:
-  helloWorld:
-    handler: handler.helloWorld
+  dadJoke:
+    handler: handler.getDadJoke
     events:
       - http:
-          path: hello-world
+          path: get-dad-joke
           method: get
           cors: true
 
