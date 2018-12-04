@@ -1,0 +1,26 @@
+{
+  "name": "serverless-dad-joke",
+  "version": "1.0.0",
+  "description": "2nd challenge of serverless #noServerNovember",
+  "main": "index.js",
+  "scripts": {
+    "start-dev": "serverless offline start",
+    "test": "jest",
+    "lint": "eslint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^22.1.1",
+    "jest": "^23.6.0",
+    "serverless-offline": "^3.31.3"
+  },
+  "dependencies": {
+    "eslint": "^5.9.0",
+    "serverless": "^1.34.1",
+    "serverless-dotenv-plugin": "^2.0.1"
+  }
+}
