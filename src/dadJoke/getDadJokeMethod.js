@@ -8,8 +8,8 @@ class GetDadJokeMethod extends Method {
     this.dadJokeService = dadJokeService;
   }
 
-  processRequest(request) {
-    const joke = this.dadJokeService.getJoke();
+  async processRequest(request) {
+    const joke = await this.dadJokeService.getJoke();
     return new SuccessResponseObject(joke);
   }
 }

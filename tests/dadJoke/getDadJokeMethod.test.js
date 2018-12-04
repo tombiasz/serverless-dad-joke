@@ -1,4 +1,3 @@
-const { ValidRequestObject } = require('../../src/common/validRequestObject');
 const { SuccessResponseObject } = require('../../src/common/successResponseObject');
 const { GetDadJokeMethod } = require('../../src/dadJoke/getDadJokeMethod');
 
@@ -7,16 +6,16 @@ const dadJokeService = {
 };
 
 describe('GetDadJokeMethod', () => {
-  test('should return successful response', () => {
+  test('should return successful response', async () => {
     const getDadJokeMethod = new GetDadJokeMethod(dadJokeService);
-    const response = getDadJokeMethod.process();
+    const response = await getDadJokeMethod.process();
     expect(response.type).toBe(SuccessResponseObject.SUCCESS);
     expect(response.value).toBe('a joke');
   });
 
-  test('should get joke from service', () => {
+  test('should get joke from service', async () => {
     const getDadJokeMethod = new GetDadJokeMethod(dadJokeService);
-    getDadJokeMethod.process();
+    await getDadJokeMethod.process();
     expect(dadJokeService.getJoke).toHaveBeenCalledWith();
   });
 });

@@ -18,9 +18,9 @@ function responseObjectToHttpResponse({ type, value }) {
   };
 }
 
-function getDadJoke(event, context, callback) {
+async function getDadJoke(event, context, callback) {
   const getDadJokeMethod = new GetDadJokeMethod();
-  const response = getDadJokeMethod.process();
+  const response = await getDadJokeMethod.process();
   callback(null, responseObjectToHttpResponse(response));
 }
 

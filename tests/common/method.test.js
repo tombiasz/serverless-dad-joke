@@ -5,21 +5,21 @@ const { InvalidRequestObject } = require('../../src/common/invalidRequestObject'
 const { ValidRequestObject } = require('../../src/common/validRequestObject');
 
 describe('Method', () => {
-  test('process should handle invalid request', () => {
+  test('process should handle invalid request', async () => {
     const request = new InvalidRequestObject();
     request.addError('param1', 'error1');
     request.addError('param2', 'error2');
     const method = new Method();
-    const response = method.process(request);
+    const response = await method.process(request);
     expect(response.isSuccess()).toBeFalsy();
     expect(response.type).toBe(FailureResponseObject.VALIDATION_ERROR);
   });
 
-  test('process should handle system error', () => {
+  test('process should handle system error', async () => {
     const method = new Method();
     method.processRequest = () => { throw new Error('ups :('); };
     const request = new ValidRequestObject();
-    const response = method.process(request);
+    const response = await method.process(request);
     expect(response.isSuccess()).toBeFalsy();
     expect(response.type).toBe(FailureResponseObject.SYSTEM_ERROR);
     expect(response.value).toEqual({
@@ -28,10 +28,10 @@ describe('Method', () => {
     });
   });
 
-  test('process should not require request to run', () => {
+  test('process should not require request to run', async () => {
     const method = new Method();
-    method.processRequest = () => { return new SuccessResponseObject('test') };
-    const response = method.process();
+    method.processRequest = () => new SuccessResponseObject('test');
+    const response = await method.process();
     expect(response.isSuccess()).toBeTruthy();
     expect(response.type).toBe(SuccessResponseObject.SUCCESS);
     expect(response.value).toBe('test');

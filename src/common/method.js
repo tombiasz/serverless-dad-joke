@@ -5,13 +5,13 @@ class Method {
     throw new Error('not implemented');
   }
 
-  process(request) {
+  async process(request) {
     if (request && !request.isValid()) {
       return FailureResponseObject.buildFromInvalidRequestObject(request);
     }
 
     try {
-      return this.processRequest(request);
+      return await this.processRequest(request);
     } catch (err) {
       return FailureResponseObject.buildFromError(err);
     }
