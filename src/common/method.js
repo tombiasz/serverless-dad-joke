@@ -6,7 +6,7 @@ class Method {
   }
 
   process(request) {
-    if (!request.isValid()) {
+    if (request && !request.isValid()) {
       return FailureResponseObject.buildFromInvalidRequestObject(request);
     }
 

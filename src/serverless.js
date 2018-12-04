@@ -1,4 +1,3 @@
-const { ValidRequestObject } = require('./common/validRequestObject');
 const { SuccessResponseObject } = require('./common/successResponseObject');
 const { FailureResponseObject } = require('./common/failureResponseObject');
 const { GetDadJokeMethod } = require('./dadJoke/getDadJokeMethod');
@@ -20,9 +19,8 @@ function responseObjectToHttpResponse({ type, value }) {
 }
 
 function getDadJoke(event, context, callback) {
-  const request = new ValidRequestObject();
   const getDadJokeMethod = new GetDadJokeMethod();
-  const response = getDadJokeMethod.process(request);
+  const response = getDadJokeMethod.process();
   callback(null, responseObjectToHttpResponse(response));
 }
 
