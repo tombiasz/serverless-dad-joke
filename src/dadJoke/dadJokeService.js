@@ -16,6 +16,14 @@ class DadJokeService {
     return joke;
   }
 
+  static formatForTwitter(joke) {
+    return `${joke} #dadJokeBot #noServerNovember #dadJoke @icanhazdadjoke`;
+  }
+
+  formatForTwitter(joke) {
+    return this.constructor.formatForTwitter(joke);
+  }
+
   async getJoke() {
     const response = await this.requestJoke();
     const json = await this.convertToJson(response);

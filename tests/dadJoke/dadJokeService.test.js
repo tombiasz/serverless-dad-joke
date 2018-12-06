@@ -43,4 +43,12 @@ describe('DadJokeService', () => {
     expect(convertToJson).toHaveBeenCalled();
     expect(extractJoke).toHaveBeenCalled();
   });
+
+  test('formatForTwitter should format twitter message', () => {
+    const message = 'test';
+    const dadJokeService = new DadJokeService();
+    const received = dadJokeService.formatForTwitter(message);
+    const expected = `${message} #dadJokeBot #noServerNovember #dadJoke @icanhazdadjoke`;
+    expect(received).toBe(expected);
+  });
 });
